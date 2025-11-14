@@ -57,10 +57,13 @@ const Index = () => {
   const skills = [
     { name: "Flutter", icon: Smartphone, color: "from-emerald-400 to-cyan-400" },
     { name: "FlutterFlow", icon: Smartphone, color: "from-cyan-400 to-blue-400" },
+    { name: "Dart", icon: Code2, color: "from-cyan-400 to-blue-400" },
+    { name: "React", icon: Code2, color: "from-cyan-400 to-blue-400" },
+    { name: "Javascript", icon: Code2, color: "from-cyan-400 to-blue-400" },
+    { name: "APIs", icon: Cloud, color: "from-emerald-400 to-teal-400" },
     { name: "Firebase", icon: Database, color: "from-blue-400 to-indigo-400" },
     { name: "Supabase", icon: Database, color: "from-yellow-400 to-orange-400" },
-    { name: "APIs", icon: Cloud, color: "from-emerald-400 to-teal-400" },
-    { name: "Architecture", icon: Cpu, color: "from-purple-400 to-pink-400" },
+    { name: "GCP", icon: Cloud, color: "from-yellow-400 to-orange-400" },
   ];
 
   const codeSnippet = `
@@ -150,7 +153,7 @@ class FlutterEngineer {
               </div>
             </div>
 
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold glitch">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold glitch">
               <span className="text-neon block mb-4">FLUTTER</span>
               <span className="text-gradient-tech">ENGINEER</span>
             </h1>
@@ -191,6 +194,7 @@ class FlutterEngineer {
           </div>
 
             <div className="flex flex-wrap gap-4 justify-center pt-8">
+              <a href="#work">
               <Button
                 size="lg"
                 className="relative group overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(52,211,153,0.5)]"
@@ -201,6 +205,8 @@ class FlutterEngineer {
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
+              </a>
+              <a href="#contact">
               <Button
                 size="lg"
                 variant="outline"
@@ -209,6 +215,7 @@ class FlutterEngineer {
                 <Mail className="mr-2 h-5 w-5" />
                 Contact
               </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -303,7 +310,7 @@ class FlutterEngineer {
       </section>
 
       {/* Projects */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative" id="work">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 reveal">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -361,7 +368,7 @@ class FlutterEngineer {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative" id="contact">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10 reveal">
@@ -401,7 +408,7 @@ class FlutterEngineer {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary/10 text-primary "
+              className="border-primary/50 text-primary hover:bg-primary/10 hover:text-white "
             >
               <Linkedin className="mr-2 h-5 w-5" />
               LinkedIn
@@ -417,7 +424,7 @@ class FlutterEngineer {
           {/* <div className="font-mono text-sm text-muted-foreground">
             <span className="text-primary">{'>'}</span> Built with React + Vite + Tailwind
           </div> */}
-          <div className="font-mono text-sm text-muted-foreground">
+          <div className="font-mono text-sm text-muted-foreground text-center">
             © 2025 <span className="text-primary">Ahmed Afrid</span>
           </div>
         </div>
