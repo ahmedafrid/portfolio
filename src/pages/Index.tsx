@@ -11,7 +11,7 @@ const Index = () => {
   const [typedText, setTypedText] = useState("");
   const heroRef = useRef<HTMLDivElement>(null);
 
-  const fullText = "< Flutter.Engineer />";
+  const fullText = "Hi I'm Afrid - Flutter Engineer";
 
   useEffect(() => {
     let index = 0;
