@@ -162,21 +162,33 @@ class FlutterEngineer {
 
             {/* Animated Stats */}
             <div className="flex flex-wrap gap-8 justify-center pt-8">
-              {[
-                { value: "3+", label: "Years XP" },
-                { value: "10+", label: "Projects" },
-                // { value: "2M+", label: "Users" },
-              ].map((stat, i) => (
-                <div key={i} className="text-center reveal stagger-1">
-                  <div className="text-4xl font-bold text-neon pulse-glow">
+            {[
+              { value: "3+", label: "YEARS XP" },
+              { value: "10+", label: "PROJECTS" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center reveal stagger-1">
+                
+                {/* Dark box with glow */}
+                <div className="
+                  bg-black/60 
+                  px-6 py-3 
+                  rounded-md 
+                  shadow-[0_0_25px_5px_rgba(0,255,180,0.3)] 
+                  backdrop-blur-sm
+                  inline-block
+                ">
+                  <div className="text-4xl font-bold text-neon">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-muted-foreground uppercase tracking-wider">
-                    {stat.label}
-                  </div>
                 </div>
-              ))}
-            </div>
+          
+                {/* Label */}
+                <div className="text-sm text-muted-foreground uppercase tracking-wider mt-2">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
 
             <div className="flex flex-wrap gap-4 justify-center pt-8">
               <Button
