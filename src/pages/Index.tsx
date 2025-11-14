@@ -57,8 +57,8 @@ const Index = () => {
   const skills = [
     { name: "Flutter", icon: Smartphone, color: "from-emerald-400 to-cyan-400" },
     { name: "FlutterFlow", icon: Zap, color: "from-cyan-400 to-blue-400" },
-    { name: "Dart", icon: Code2, color: "from-blue-400 to-indigo-400" },
-    { name: "Firebase", icon: Database, color: "from-yellow-400 to-orange-400" },
+    { name: "Firebase", icon: Database, color: "from-blue-400 to-indigo-400" },
+    { name: "Supabase", icon: Database, color: "from-yellow-400 to-orange-400" },
     { name: "APIs", icon: Cloud, color: "from-emerald-400 to-teal-400" },
     { name: "Architecture", icon: Cpu, color: "from-purple-400 to-pink-400" },
   ];
@@ -67,7 +67,7 @@ const Index = () => {
 class FlutterEngineer {
   final skills = [
     'Flutter', 'Dart', 
-    'FlutterFlow', 'Firebase'
+    'FlutterFlow', 'Supabase', 'Firebase'
   ];
   
   void build() => createAmazingApps();
@@ -163,9 +163,9 @@ class FlutterEngineer {
             {/* Animated Stats */}
             <div className="flex flex-wrap gap-8 justify-center pt-8">
               {[
-                { value: "5+", label: "Years XP" },
-                { value: "50+", label: "Projects" },
-                { value: "2M+", label: "Users" },
+                { value: "3+", label: "Years XP" },
+                { value: "10+", label: "Projects" },
+                // { value: "2M+", label: "Users" },
               ].map((stat, i) => (
                 <div key={i} className="text-center reveal stagger-1">
                   <div className="text-4xl font-bold text-neon pulse-glow">
