@@ -1,205 +1,328 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Smartphone, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Terminal, Code2, Zap, Cpu, Database, Cloud, Smartphone } from "lucide-react";
+import { TechGrid } from "@/components/TechGrid";
+import { MatrixRain } from "@/components/MatrixRain";
 
 const Index = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [typedText, setTypedText] = useState("");
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  const fullText = "< Flutter.Engineer />";
 
   useEffect(() => {
-    setIsVisible(true);
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+    });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   const skills = [
-    { name: "Flutter", level: 95 },
-    { name: "FlutterFlow", level: 90 },
-    { name: "Dart", level: 90 },
-    { name: "Firebase", level: 85 },
-    { name: "API Integration", level: 88 },
-    { name: "UI/UX Design", level: 82 },
+    { name: "Flutter", icon: Smartphone, color: "from-emerald-400 to-cyan-400" },
+    { name: "FlutterFlow", icon: Zap, color: "from-cyan-400 to-blue-400" },
+    { name: "Dart", icon: Code2, color: "from-blue-400 to-indigo-400" },
+    { name: "Firebase", icon: Database, color: "from-yellow-400 to-orange-400" },
+    { name: "APIs", icon: Cloud, color: "from-emerald-400 to-teal-400" },
+    { name: "Architecture", icon: Cpu, color: "from-purple-400 to-pink-400" },
   ];
+
+  const codeSnippet = `
+class FlutterEngineer {
+  final skills = [
+    'Flutter', 'Dart', 
+    'FlutterFlow', 'Firebase'
+  ];
+  
+  void build() => createAmazingApps();
+}`;
 
   const projects = [
     {
-      title: "E-Commerce Mobile App",
-      description: "Full-featured shopping app built with Flutter, featuring real-time inventory, payment integration, and elegant animations.",
-      tags: ["Flutter", "Firebase", "Stripe"],
-      gradient: "from-cyan-500 to-blue-500",
+      id: "01",
+      title: "NeoBanking App",
+      tech: "Flutter • Firebase • Plaid API",
+      description: "Real-time financial dashboard with biometric auth",
+      metrics: "500K+ users",
     },
     {
-      title: "FlutterFlow SaaS Platform",
-      description: "No-code platform extension with custom components and advanced integrations for enterprise clients.",
-      tags: ["FlutterFlow", "API", "Cloud Functions"],
-      gradient: "from-teal-500 to-emerald-500",
+      id: "02",
+      title: "AI Chat Platform",
+      tech: "FlutterFlow • OpenAI • WebSockets",
+      description: "GPT-powered messaging with voice synthesis",
+      metrics: "1M+ messages/day",
     },
     {
-      title: "Healthcare Dashboard",
-      description: "Patient management system with real-time data visualization and secure authentication.",
-      tags: ["Flutter", "Charts", "Security"],
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Social Media Clone",
-      description: "Instagram-like application with stories, posts, and real-time messaging functionality.",
-      tags: ["Flutter", "WebSocket", "Media"],
-      gradient: "from-emerald-500 to-teal-500",
+      id: "03",
+      title: "Fitness Tracker Pro",
+      tech: "Flutter • HealthKit • ML Kit",
+      description: "Computer vision workout analyzer with AI coach",
+      metrics: "50K+ downloads",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-primary overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <MatrixRain />
+      <TechGrid />
+      
+      {/* Custom Cursor Effect */}
+      <div
+        className="fixed w-8 h-8 border-2 border-primary rounded-full pointer-events-none z-50 mix-blend-difference"
+        style={{
+          left: `${mousePosition.x - 16}px`,
+          top: `${mousePosition.y - 16}px`,
+          transition: "all 0.1s ease",
+        }}
+      />
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }}></div>
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 tech-grid">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center space-y-8">
+            {/* Terminal Header */}
+            <div className="inline-block">
+              <div className="bg-secondary/50 backdrop-blur-sm border border-primary/30 rounded-lg p-4 text-left font-mono text-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-3 h-3 rounded-full bg-red-500" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <span className="ml-2 text-muted-foreground">terminal.sh</span>
+                </div>
+                <div className="text-primary">
+                  <span className="text-muted-foreground">$</span> whoami
+                  <br />
+                  <span className="text-foreground">{typedText}</span>
+                  <span className="animate-pulse">|</span>
+                </div>
+              </div>
+            </div>
+
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold glitch">
+              <span className="text-neon block mb-4">FLUTTER</span>
+              <span className="text-gradient-tech">ENGINEER</span>
+            </h1>
+
+            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Building <span className="text-primary font-semibold">high-performance</span> mobile applications
+              with <span className="text-primary font-semibold">pixel-perfect</span> design
+            </p>
+
+            {/* Animated Stats */}
+            <div className="flex flex-wrap gap-8 justify-center pt-8">
+              {[
+                { value: "5+", label: "Years XP" },
+                { value: "50+", label: "Projects" },
+                { value: "2M+", label: "Users" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center reveal stagger-1">
+                  <div className="text-4xl font-bold text-neon pulse-glow">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-4 justify-center pt-8">
+              <Button
+                size="lg"
+                className="relative group overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(52,211,153,0.5)]"
+              >
+                <span className="relative z-10 flex items-center">
+                  <Terminal className="mr-2 h-5 w-5" />
+                  View Projects
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Contact
+              </Button>
+            </div>
+          </div>
         </div>
 
-        <div className={`relative z-10 text-center max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6 animate-fade-in">
-            <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm font-medium">
-              <Sparkles className="w-4 h-4 mr-2 inline" />
-              Available for Projects
-            </Badge>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
-            Flutter & FlutterFlow
-            <br />
-            <span className="text-gradient">Software Engineer</span>
-          </h1>
-
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-slide-up stagger-1">
-            Crafting beautiful, high-performance mobile applications with cutting-edge technology and pixel-perfect design.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center animate-slide-up stagger-2">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-glow-hover transition-all">
-              <Mail className="mr-2 h-5 w-5" />
-              Get in Touch
-            </Button>
-            <Button size="lg" variant="secondary" className="hover:bg-secondary/80 transition-all">
-              <Code2 className="mr-2 h-5 w-5" />
-              View Projects
-            </Button>
-          </div>
-
-          <div className="flex gap-6 justify-center mt-8 animate-fade-in stagger-3">
-            <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-              <Mail className="w-6 h-6" />
-            </a>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce" />
           </div>
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Code Showcase */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              About <span className="text-gradient">Me</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Passionate software engineer with expertise in Flutter and FlutterFlow, dedicated to building exceptional mobile experiences.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <Card className="p-8 bg-gradient-card border-border/50 card-glow">
-              <Smartphone className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Mobile First</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                With years of experience in mobile development, I specialize in creating responsive, intuitive applications that users love. 
-                Every project is approached with meticulous attention to detail and performance optimization.
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="reveal">
+              <Badge className="mb-4 bg-primary/20 text-primary border-primary/30">
+                <Terminal className="w-3 h-3 mr-1" />
+                Developer Profile
+              </Badge>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+                Clean Code,
+                <br />
+                <span className="text-gradient-tech">Beautiful Apps</span>
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                Specializing in Flutter and FlutterFlow development with a focus on
+                scalable architecture, smooth animations, and exceptional user experience.
               </p>
-            </Card>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full pulse-glow" />
+                  <span className="text-foreground">Cross-platform expertise</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full pulse-glow" />
+                  <span className="text-foreground">Performance optimization</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full pulse-glow" />
+                  <span className="text-foreground">Modern UI/UX patterns</span>
+                </div>
+              </div>
+            </div>
 
-            <Card className="p-8 bg-gradient-card border-border/50 card-glow">
-              <Code2 className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Clean Code</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                I believe in writing maintainable, scalable code that stands the test of time. Following best practices and modern 
-                architecture patterns ensures projects are built for long-term success.
-              </p>
-            </Card>
+            <div className="reveal stagger-2">
+              <div className="code-block scan-line">
+                <pre className="text-primary/90">
+                  <code>{codeSnippet}</code>
+                </pre>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
+      {/* Skills Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative tech-grid-animated">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 reveal">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Technical <span className="text-gradient">Skills</span>
+              Tech <span className="text-gradient-tech">Stack</span>
             </h2>
             <p className="text-muted-foreground text-lg">
-              Proficient in modern technologies and frameworks
+              Cutting-edge technologies for modern applications
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <Card key={skill.name} className="p-6 bg-gradient-card border-border/50 card-glow" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex justify-between items-center mb-3">
-                  <h4 className="font-semibold text-lg">{skill.name}</h4>
-                  <span className="text-primary font-bold">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-secondary rounded-full h-2.5 overflow-hidden">
-                  <div 
-                    className="bg-gradient-accent h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
-              </Card>
-            ))}
+            {skills.map((skill, index) => {
+              const Icon = skill.icon;
+              return (
+                <Card
+                  key={skill.name}
+                  className={`tech-card p-8 reveal stagger-${index + 1} group cursor-pointer`}
+                >
+                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${skill.color} p-0.5 mb-4 float-slow`}>
+                    <div className="w-full h-full bg-background rounded-lg flex items-center justify-center">
+                      <Icon className="w-8 h-8 text-primary" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {skill.name}
+                  </h3>
+                  <div className="h-1 w-0 bg-gradient-to-r from-primary to-cyan-400 group-hover:w-full transition-all duration-500" />
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* Projects */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 reveal">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Featured <span className="text-gradient">Projects</span>
+              Featured <span className="text-gradient-tech">Work</span>
             </h2>
             <p className="text-muted-foreground text-lg">
-              A selection of recent work and achievements
+              Production-ready applications at scale
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="space-y-6">
             {projects.map((project, index) => (
-              <Card key={project.title} className="group relative overflow-hidden bg-gradient-card border-border/50 card-glow" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                
-                <div className="p-6 relative">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
+              <Card
+                key={project.id}
+                className={`tech-card p-8 reveal stagger-${index + 1} group cursor-pointer`}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                  <div className="text-6xl font-bold text-primary/20 group-hover:text-primary/40 transition-colors">
+                    {project.id}
+                  </div>
                   
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map(tag => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-mono mb-3">
+                      {project.tech}
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
                   </div>
 
-                  <Button variant="ghost" size="sm" className="group-hover:text-primary transition-colors">
-                    View Project <ExternalLink className="ml-2 w-4 h-4" />
-                  </Button>
+                  <div className="text-right">
+                    <Badge className="bg-primary/20 text-primary border-primary/30 mb-4">
+                      {project.metrics}
+                    </Badge>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="group-hover:text-primary group-hover:translate-x-2 transition-all"
+                    >
+                      View <ExternalLink className="ml-2 w-4 h-4" />
+                    </Button>
+                  </div>
                 </div>
               </Card>
             ))}
@@ -207,33 +330,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            Let's Work <span className="text-gradient">Together</span>
-          </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-            Have a project in mind? I'm always open to discussing new opportunities and collaborations.
-          </p>
+      {/* Contact CTA */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10 reveal">
+          <Terminal className="w-16 h-16 text-primary mx-auto mb-8 float-slow" />
           
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            Let's Build Something
+            <br />
+            <span className="text-gradient-tech">Extraordinary</span>
+          </h2>
+          
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Available for freelance projects and full-time opportunities
+          </p>
+
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-glow-hover transition-all">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(52,211,153,0.5)] hover:shadow-[0_0_50px_rgba(52,211,153,0.7)] transition-all"
+            >
               <Mail className="mr-2 h-5 w-5" />
-              Email Me
+              Get In Touch
             </Button>
-            <Button size="lg" variant="secondary" className="hover:bg-secondary/80 transition-all">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/50 text-primary hover:bg-primary/10"
+            >
+              <Github className="mr-2 h-5 w-5" />
+              GitHub
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/50 text-primary hover:bg-primary/10"
+            >
               <Linkedin className="mr-2 h-5 w-5" />
-              Connect on LinkedIn
+              LinkedIn
             </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto text-center text-muted-foreground">
-          <p>© 2024 Flutter Developer. Built with React & Tailwind CSS.</p>
+      <footer className="py-8 px-4 border-t border-primary/20">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="font-mono text-sm text-muted-foreground">
+            <span className="text-primary">{'>'}</span> Built with React + Vite + Tailwind
+          </div>
+          <div className="font-mono text-sm text-muted-foreground">
+            © 2024 <span className="text-primary">Flutter.Engineer</span>
+          </div>
         </div>
       </footer>
     </div>
