@@ -336,21 +336,22 @@ class FlutterEngineer {
                       {project.description}
                     </p>
                   </div>
+                  
                   {project.metrics && (
                       <div className="text-right">
                         <Badge className="bg-primary/20 text-primary border-primary/30 mb-4">
                           {project.metrics}
-                        </Badge>
+                        </Badge> 
+                      </div>
+                    )}
 
-                    
-                    {/* <Button
+                        {/* <Button
                       variant="ghost"
                       size="sm"
                       className="group-hover:text-primary group-hover:translate-x-2 transition-all"
                     >
                       View <ExternalLink className="ml-2 w-4 h-4" />
                     </Button> */}
-                    )}
                   </div>
                 </div>
               </Card>
