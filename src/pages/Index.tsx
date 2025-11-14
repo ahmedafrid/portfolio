@@ -76,24 +76,38 @@ class FlutterEngineer {
   const projects = [
     {
       id: "01",
-      title: "NeoBanking App",
-      tech: "Flutter • Firebase • Plaid API",
-      description: "Real-time financial dashboard with biometric auth",
-      metrics: "500K+ users",
+      title: "Fintech App",
+      tech: "Flutter • FlutterFlow • API",
+      description: "Worked on development of a complex Investment app for a bank using Flutter and FlutterFlow",
+      metrics: "5M+ users",
     },
     {
       id: "02",
       title: "AI Chat Platform",
-      tech: "FlutterFlow • OpenAI • WebSockets",
-      description: "GPT-powered messaging with voice synthesis",
-      metrics: "1M+ messages/day",
+      tech: "FlutterFlow • OpenAI • DALLE",
+      description: "GPT-powered messaging with image generation for a outfit planner web app",
+      // metrics: "1M+ messages/day",
     },
     {
       id: "03",
-      title: "Fitness Tracker Pro",
-      tech: "Flutter • HealthKit • ML Kit",
-      description: "Computer vision workout analyzer with AI coach",
-      metrics: "50K+ downloads",
+      title: "Social App",
+      tech: "Flutter • FlutterFlow • Supabase • Supabase • Google Maps",
+      description: "Developed full-stack social app for a US client",
+      // metrics: "50K+ downloads",
+    },
+    {
+      id: "04",
+      title: "Dating App",
+      tech: "Flutter • FlutterFlow • Supabase • Edge function",
+      description: "Developed full-stack group dating app for a US client with matching algorithm",
+      // metrics: "50K+ downloads",
+    },
+    {
+      id: "05",
+      title: "Ride Hailing App",
+      tech: "Flutter • FlutterFlow • API • Google Map SDK",
+      description: "Redesigned existing app using Flutter for one of the popular ride hailing app",
+      // metrics: "50K+ downloads",
     },
   ];
 
@@ -378,11 +392,11 @@ class FlutterEngineer {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-primary/20">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="font-mono text-sm text-muted-foreground">
+          {/* <div className="font-mono text-sm text-muted-foreground">
             <span className="text-primary">{'>'}</span> Built with React + Vite + Tailwind
-          </div>
+          </div> */}
           <div className="font-mono text-sm text-muted-foreground">
-            © 2024 <span className="text-primary">Flutter.Engineer</span>
+            © 2025 <span className="text-primary">Flutter.Engineer</span>
           </div>
         </div>
       </footer>
