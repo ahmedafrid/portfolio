@@ -56,7 +56,7 @@ const Index = () => {
 
   const skills = [
     { name: "Flutter", icon: Smartphone, color: "from-emerald-400 to-cyan-400" },
-    { name: "FlutterFlow", icon: Zap, color: "from-cyan-400 to-blue-400" },
+    { name: "FlutterFlow", icon: Smartphone, color: "from-cyan-400 to-blue-400" },
     { name: "Firebase", icon: Database, color: "from-blue-400 to-indigo-400" },
     { name: "Supabase", icon: Database, color: "from-yellow-400 to-orange-400" },
     { name: "APIs", icon: Cloud, color: "from-emerald-400 to-teal-400" },
@@ -202,11 +202,11 @@ class FlutterEngineer {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce" />
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* Code Showcase */}
@@ -324,18 +324,21 @@ class FlutterEngineer {
                       {project.description}
                     </p>
                   </div>
+                  {project.metrics && (
+                      <div className="text-right">
+                        <Badge className="bg-primary/20 text-primary border-primary/30 mb-4">
+                          {project.metrics}
+                        </Badge>
 
-                  <div className="text-right">
-                    <Badge className="bg-primary/20 text-primary border-primary/30 mb-4">
-                      {project.metrics}
-                    </Badge>
-                    <Button
+                    
+                    {/* <Button
                       variant="ghost"
                       size="sm"
                       className="group-hover:text-primary group-hover:translate-x-2 transition-all"
                     >
                       View <ExternalLink className="ml-2 w-4 h-4" />
-                    </Button>
+                    </Button> */}
+                    )}
                   </div>
                 </div>
               </Card>
@@ -362,6 +365,7 @@ class FlutterEngineer {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
+            <a href="mailto:ahmedafridwork@gmail.com" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(52,211,153,0.5)] hover:shadow-[0_0_50px_rgba(52,211,153,0.7)] transition-all"
@@ -369,22 +373,27 @@ class FlutterEngineer {
               <Mail className="mr-2 h-5 w-5" />
               Get In Touch
             </Button>
+            </a>
+            <a href="https://github.com/ahmedafrid" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary/10"
+              className="border-primary/50 text-primary hover:bg-primary/10 hover:text-white"
             >
               <Github className="mr-2 h-5 w-5" />
               GitHub
             </Button>
+          </a>
+            <a href="https://www.linkedin.com/in/ahmed-afrid-3433841a4" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary/10"
+              className="border-primary/50 text-primary hover:bg-primary/10 text-primary "
             >
               <Linkedin className="mr-2 h-5 w-5" />
               LinkedIn
             </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -396,7 +405,7 @@ class FlutterEngineer {
             <span className="text-primary">{'>'}</span> Built with React + Vite + Tailwind
           </div> */}
           <div className="font-mono text-sm text-muted-foreground">
-            © 2025 <span className="text-primary">Flutter.Engineer</span>
+            © 2025 <span className="text-primary">Ahmed Afrid</span>
           </div>
         </div>
       </footer>
