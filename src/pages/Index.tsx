@@ -173,14 +173,16 @@ class FlutterEngineer {
               */}
             
               {/* Placeholder Circle */}
-              <div className="w-40 h-40 rounded-full border-4 border-pink-300 bg-[#2d242c] flex items-center justify-center text-pink-200 text-xl font-semibold opacity-60">
+              {/* <div className="w-40 h-40 rounded-full border-4 border-pink-300 bg-[#2d242c] flex items-center justify-center text-pink-200 text-xl font-semibold opacity-60">
                 {/* Placeholder text */}
-                Image Here
-              </div>
+             
+              {/* </div>  */}
+            
             
               {/* Main Heading */}
               <h1 className="mt-10 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                Hi, I'm <span className="text-pink-300">Ayesha Ahmed</span>
+                Hi, I'm 
+                <span className="text-gradient-tech">Ahmed Afrid</span>              
                 <span className="mx-3 text-white">—</span>
                 <span className="text-white">Flutter</span>
               </h1>
