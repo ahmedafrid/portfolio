@@ -315,27 +315,7 @@ class FlutterEngineer {
 
       {/* Skills Grid */}
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
-  <div className="max-w-5xl mx-auto">
-    <div className="text-center mb-10">
-      <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-        Tech <span className="text-gradient-tech">Stack</span>
-      </h2>
-      <p className="text-muted-foreground text-base sm:text-lg">
-        Cutting-edge technologies for modern applications
-      </p>
-    </div>
 
-    {/* chips */}
-    <div className="flex flex-wrap gap-3 justify-center">
-      {skills.map((skill) => (
-        <div key={skill} className="tech-pill">
-          {skill}
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
     
 
