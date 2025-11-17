@@ -136,7 +136,7 @@ class FlutterEngineer {
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center space-y-8">
             {/* Terminal Header */}
-            <div className="inline-block">
+            {/* <div className="inline-block">
               <div className="bg-secondary/50 backdrop-blur-sm border border-primary/30 rounded-lg p-4 text-left font-mono text-sm">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -151,12 +151,45 @@ class FlutterEngineer {
                   <span className="animate-pulse">|</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold glitch">
+            {/* <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold glitch">
               <span className="text-neon block mb-4">FLUTTER</span>
               <span className="text-gradient-tech">ENGINEER</span>
-            </h1>
+            </h1> */}
+
+            {/* updated landing design */}
+
+            <section className="w-full py-20 flex flex-col items-center text-center">
+              {/* Profile Image (commented out for now) */}
+              {/*
+              <div className="w-40 h-40 rounded-full border-4 border-pink-300 p-1 shadow-xl">
+                <img 
+                  src="/your-image-here.png" 
+                  alt="Profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              */}
+            
+              {/* Placeholder Circle */}
+              <div className="w-40 h-40 rounded-full border-4 border-pink-300 bg-[#2d242c] flex items-center justify-center text-pink-200 text-xl font-semibold opacity-60">
+                {/* Placeholder text */}
+                Image Here
+              </div>
+            
+              {/* Main Heading */}
+              <h1 className="mt-10 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                Hi, I'm <span className="text-pink-300">Ayesha Ahmed</span>
+                <span className="mx-3 text-white">—</span>
+                <span className="text-white">Flutter</span>
+              </h1>
+            
+              {/* Subtitle */}
+              <p className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+                Mobile App Developer
+              </p>
+            </section>
 
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Building <span className="text-primary font-semibold">high-performance</span> mobile applications
