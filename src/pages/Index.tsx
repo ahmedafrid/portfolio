@@ -60,10 +60,18 @@ const Index = () => {
     { name: "Dart", icon: Code2, color: "from-cyan-400 to-blue-400" },
     { name: "React", icon: Code2, color: "from-cyan-400 to-blue-400" },
     { name: "Javascript", icon: Code2, color: "from-cyan-400 to-blue-400" },
-    { name: "APIs", icon: Cloud, color: "from-emerald-400 to-teal-400" },
+    { name: "HTML/CSS", icon: Code2, color: "from-cyan-400 to-blue-400" },
     { name: "Firebase", icon: Database, color: "from-blue-400 to-indigo-400" },
     { name: "Supabase", icon: Database, color: "from-yellow-400 to-orange-400" },
     { name: "GCP", icon: Cloud, color: "from-yellow-400 to-orange-400" },
+    { name: "Edge function", icon: Cloud, color: "from-yellow-400 to-orange-400" },
+    { name: "Cloud function", icon: Cloud, color: "from-yellow-400 to-orange-400" },
+    { name: "API Integration", icon: Cloud, color: "from-emerald-400 to-teal-400" },
+    { name: "Postman", icon: Code2, color: "from-cyan-400 to-blue-400" },
+    { name: "Crashlytics", icon: Cloud, color: "from-yellow-400 to-orange-400" },
+    { name: "Testflight", icon: Cloud, color: "from-yellow-400 to-orange-400" },
+    { name: "Playstore deployment", icon: Cloud, color: "from-yellow-400 to-orange-400" },
+    { name: "Appstore deploymnet", icon: Cloud, color: "from-yellow-400 to-orange-400" },
   ];
 
   const codeSnippet = `
@@ -77,41 +85,42 @@ class FlutterEngineer {
 }`;
 
   const projects = [
-    {
-      id: "01",
-      title: "Fintech App",
-      tech: "Flutter • FlutterFlow • API",
-      description: "Worked on development of a complex Investment app for a bank using Flutter and FlutterFlow",
-      metrics: "5M+ users",
-    },
-    {
-      id: "02",
-      title: "AI Chat Platform",
-      tech: "FlutterFlow • OpenAI • DALLE",
-      description: "GPT-powered messaging with image generation for a outfit planner web app",
-      // metrics: "1M+ messages/day",
-    },
-    {
-      id: "03",
-      title: "Social App",
-      tech: "Flutter • FlutterFlow • Supabase • Supabase • Google Maps",
-      description: "Developed full-stack social app for a US client",
-      // metrics: "50K+ downloads",
-    },
-    {
-      id: "04",
-      title: "Dating App",
-      tech: "Flutter • FlutterFlow • Supabase • Edge function",
-      description: "Developed full-stack group dating app for a US client with matching algorithm",
-      // metrics: "50K+ downloads",
-    },
-    {
-      id: "05",
-      title: "Ride Hailing App",
-      tech: "Flutter • FlutterFlow • API • Google Map SDK",
-      description: "Redesigned existing app using Flutter for one of the popular ride hailing app",
-      // metrics: "50K+ downloads",
-    },
+{
+  id: "01",
+  title: "Fintech App",
+  tech: "Flutter • FlutterFlow • API",
+  description:
+    "Built a high-scale investment and banking application using Flutter and FlutterFlow, featuring secure transactions, dashboards, and real-time financial APIs.",
+  metrics: "5M+ users",
+},
+{
+  id: "02",
+  title: "AI Chat Platform",
+  tech: "FlutterFlow • OpenAI • DALLE",
+  description:
+    "Developed an AI-powered conversational platform with GPT chat, smart prompts, and DALLE image generation for a creative outfit-planning application.",
+},
+{
+  id: "03",
+  title: "Social App",
+  tech: "Flutter • FlutterFlow • Supabase • Google Maps",
+  description:
+    "Created a full-stack social networking app with real-time feeds, user connections, and integrated mapping features for a US-based startup.",
+},
+{
+  id: "04",
+  title: "Dating App",
+  tech: "Flutter • FlutterFlow • Supabase • Edge Functions",
+  description:
+    "Built a modern group dating application with a custom matching algorithm, secure auth, chat, and real-time features.",
+},
+{
+  id: "05",
+  title: "Ride Hailing App",
+  tech: "Flutter • FlutterFlow • API • Google Maps SDK",
+  description:
+    "Redesigned and modernized a large-scale ride-hailing platform with improved UI/UX, optimized performance, and updated mapping workflows.",
+},
   ];
 
   return (
@@ -306,39 +315,52 @@ class FlutterEngineer {
 
       {/* Skills Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative tech-grid-animated">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 reveal">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Tech <span className="text-gradient-tech">Stack</span>
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Cutting-edge technologies for modern applications
-            </p>
-          </div>
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-16 reveal">
+      <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+        Tech <span className="text-gradient-tech">Stack</span>
+      </h2>
+      <p className="text-muted-foreground text-lg">
+        Cutting-edge technologies for modern applications
+      </p>
+    </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => {
-              const Icon = skill.icon;
-              return (
-                <Card
-                  key={skill.name}
-                  className={`tech-card p-8 reveal stagger-${index + 1} group cursor-pointer`}
-                >
-                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${skill.color} p-0.5 mb-4 float-slow`}>
-                    <div className="w-full h-full bg-background rounded-lg flex items-center justify-center">
-                      <Icon className="w-8 h-8 text-primary" />
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {skill.name}
-                  </h3>
-                  <div className="h-1 w-0 bg-gradient-to-r from-primary to-cyan-400 group-hover:w-full transition-all duration-500" />
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+    {/* centered grid like your design */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      {skills.map((skill, index) => {
+        const Icon = skill.icon;
+        return (
+          <Card
+            key={skill.name}
+            className={`tech-card w-full max-w-sm p-6 sm:p-8 reveal stagger-${
+              index + 1
+            } group cursor-pointer flex flex-col justify-between`}
+          >
+            {/* icon + top area */}
+            <div className="mb-6">
+              <div
+                className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${
+                  skill.color
+                } p-[3px] mb-4 float-slow`}
+              >
+                <div className="w-full h-full bg-background rounded-xl flex items-center justify-center">
+                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                </div>
+              </div>
+
+              <h3 className="tech-title group-hover:text-primary transition-colors">
+                {skill.name}
+              </h3>
+            </div>
+
+            {/* bottom accent line */}
+            <div className="h-px w-1/4 bg-gradient-to-r from-primary/80 to-cyan-400/80 group-hover:w-3/4 transition-all duration-500" />
+          </Card>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* Projects */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative" id="work">
