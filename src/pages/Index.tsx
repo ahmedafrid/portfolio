@@ -182,15 +182,11 @@ class FlutterEngineer {
               {/* Main Heading */}
               <h1 className="mt-10 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                 Hi, I'm 
-                <span className="text-gradient-tech">Ahmed Afrid</span>              
+                <span className="text-gradient-tech"> Ahmed Afrid</span>              
                 <span className="mx-3 text-white">—</span>
-                <span className="text-white">Flutter</span>
+                <span className="text-white">Flutter Engineer</span>
               </h1>
             
-              {/* Subtitle */}
-              <p className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
-                Mobile App Developer
-              </p>
             </section>
 
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
