@@ -314,7 +314,31 @@ class FlutterEngineer {
       </section>
 
       {/* Skills Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative tech-grid-animated">
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
+  <div className="max-w-5xl mx-auto">
+    <div className="text-center mb-10">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+        Tech <span className="text-gradient-tech">Stack</span>
+      </h2>
+      <p className="text-muted-foreground text-base sm:text-lg">
+        Cutting-edge technologies for modern applications
+      </p>
+    </div>
+
+    {/* chips */}
+    <div className="flex flex-wrap gap-3 justify-center">
+      {skills.map((skill) => (
+        <div key={skill} className="tech-pill">
+          {skill}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 relative tech-grid-animated">
   <div className="max-w-6xl mx-auto">
     <div className="text-center mb-16 reveal">
       <h2 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -326,7 +350,7 @@ class FlutterEngineer {
     </div>
 
     {/* centered grid like your design */}
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+    {/* <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
       {skills.map((skill, index) => {
         const Icon = skill.icon;
         return (
@@ -337,7 +361,7 @@ class FlutterEngineer {
             } group cursor-pointer flex flex-col justify-between`}
           >
             {/* icon + top area */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <div
                 className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${
                   skill.color
@@ -354,13 +378,13 @@ class FlutterEngineer {
             </div>
 
             {/* bottom accent line */}
-            <div className="h-px w-1/4 bg-gradient-to-r from-primary/80 to-cyan-400/80 group-hover:w-3/4 transition-all duration-500" />
+            {/* <div className="h-px w-1/4 bg-gradient-to-r from-primary/80 to-cyan-400/80 group-hover:w-3/4 transition-all duration-500" />
           </Card>
         );
       })}
     </div>
-  </div>
-</section>
+  </div> */} */}
+{/* </section> */} */} */}
 
       {/* Projects */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative" id="work">
