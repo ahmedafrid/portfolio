@@ -5,13 +5,21 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, ExternalLink, Terminal, Code2, Zap, Cpu, Database, Cloud, Smartphone } from "lucide-react";
 import { TechGrid } from "@/components/TechGrid";
 import { MatrixRain } from "@/components/MatrixRain";
+import Game from "@/components/game";
 
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [typedText, setTypedText] = useState("");
   const heroRef = useRef<HTMLDivElement>(null);
 
-  const fullText = "Hi I'm Afrid - Flutter Engineer";
+
+
+  const fullText = [
+    "name   : Ahmed Afrid",
+    "role   : Flutter & FlutterFlow Engineer",
+    "focus  : high-performance, pixel-perfect apps",
+    "status : available for exciting projects 🚀",
+  ].join("\n");
 
   useEffect(() => {
     let index = 0;
@@ -88,38 +96,39 @@ class FlutterEngineer {
 {
   id: "01",
   title: "Fintech App",
-  tech: "Flutter • FlutterFlow • API",
+  tech: "Flutter • FlutterFlow • API • Payment • Encryption",
   description:
     "Built a high-scale investment and banking application using Flutter and FlutterFlow, featuring secure transactions, dashboards, and real-time financial APIs.",
-  metrics: "5M+ users",
+  metrics: ["5M+ users"],
 },
 {
   id: "02",
   title: "AI Chat Platform",
-  tech: "FlutterFlow • OpenAI • DALLE",
+  tech: "FlutterFlow • OpenAI • DALLE • Chat",
   description:
     "Developed an AI-powered conversational platform with GPT chat, smart prompts, and DALLE image generation for a creative outfit-planning application.",
 },
 {
   id: "03",
   title: "Social App",
-  tech: "Flutter • FlutterFlow • Supabase • Google Maps",
+  tech: "FlutterFlow • Supabase • Edge Function • Stripe Payment",
   description:
     "Created a full-stack social networking app with real-time feeds, user connections, and integrated mapping features for a US-based startup.",
+   metrics: ["Web", "Android", "IOS"],
 },
 {
   id: "04",
   title: "Dating App",
-  tech: "Flutter • FlutterFlow • Supabase • Edge Functions",
+  tech: "Flutter • FlutterFlow • Supabase • Google Maps API",
   description:
-    "Built a modern group dating application with a custom matching algorithm, secure auth, chat, and real-time features.",
+    "Built a modern group dating application with a custom matching algorithm, location based filtering, secure auth, and real-time features.",
 },
 {
   id: "05",
-  title: "Ride Hailing App",
+  title: "Ride Sharing App",
   tech: "Flutter • FlutterFlow • API • Google Maps SDK",
   description:
-    "Redesigned and modernized a large-scale ride-hailing platform with improved UI/UX, optimized performance, and updated mapping workflows.",
+    "Redesigned and modernized a large-scale ride-sharing app with improved UI/UX, optimized performance, and updated mapping workflows.",
 },
   ];
 
@@ -156,7 +165,7 @@ class FlutterEngineer {
                 <div className="text-primary">
                   <span className="text-muted-foreground">$</span> whoami
                   <br />
-                  <span className="text-foreground">{typedText}</span>
+                  <span className="text-foreground whitespace-pre-line">{typedText}</span>
                   <span className="animate-pulse">|</span>
                 </div>
               </div>
@@ -189,18 +198,26 @@ class FlutterEngineer {
             
             
               {/* Main Heading */}
-              <h1 className="mt-10 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                Hi, I'm 
-                <span className="text-gradient-tech"> Ahmed Afrid</span>              
-                <span className="mx-3 text-white">—</span>
-                <span className="text-white">Flutter Engineer</span>
+              <h1 className="reveal stagger-1 mt-10 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                {/* <span className="block text-sm sm:text-base font-mono text-primary/70 mb-3 uppercase tracking-[0.25em]">
+                  Flutter • FlutterFlow • Supabase • Firebase 
+                </span> */}
+                <span className="block">
+                  Hi, I'm
+                  <span className="text-gradient-tech"> Ahmed Afrid</span>
+                </span>
+                <span className="block text-white mt-2">
+                  Flutter &amp; FlutterFlow Engineer
+                </span>
               </h1>
             
             </section>
 
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Building <span className="text-primary font-semibold">high-performance</span> mobile applications
-              with <span className="text-primary font-semibold">pixel-perfect</span> design
+            <p className="reveal stagger-2 text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Helping startups and teams ship 
+              <span className="text-primary font-semibold"> high-performance</span> mobile applications
+              with <span className="text-primary font-semibold"> pixel-perfect</span> design and 
+              scalable architecture.
             </p>
 
             {/* Animated Stats */}
@@ -213,11 +230,9 @@ class FlutterEngineer {
                 
                 {/* Dark box with glow */}
                 <div className="
-                  bg-black/60 
                   px-6 py-3 
                   rounded-md 
-                  shadow-[0_0_25px_5px_rgba(0,255,180,0.3)] 
-                  backdrop-blur-sm
+                  shadow-[0_0_25px_5px_rgba(0,255,180,0.1)] 
                   inline-block
                 ">
                   <div className="text-4xl font-bold text-neon">
@@ -250,7 +265,7 @@ class FlutterEngineer {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary"
+                className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:text-white"
               >
                 <Mail className="mr-2 h-5 w-5" />
                 Contact
@@ -390,11 +405,16 @@ class FlutterEngineer {
                     </p>
                   </div>
                   
-                  {project.metrics && (
-                      <div className="text-right">
-                        <Badge className="bg-primary/20 text-primary border-primary/30 mb-4">
-                          {project.metrics}
-                        </Badge> 
+                 {project.metrics && (
+                      <div className="text-right flex flex-col items-end gap-2">
+                        {project.metrics.map((metric: string, idx: number) => (
+                          <Badge
+                            key={idx}
+                            className="bg-primary/20 text-primary border-primary/30"
+                          >
+                            {metric}
+                          </Badge>
+                        ))}
                       </div>
                     )}
 
@@ -464,14 +484,16 @@ class FlutterEngineer {
         </div>
       </section>
 
+      {/* <Game /> */}
+
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-primary/20">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="max-w-6xl mx-auto flex flex-col justify-center items-center text-center gap-4">
           {/* <div className="font-mono text-sm text-muted-foreground">
             <span className="text-primary">{'>'}</span> Built with React + Vite + Tailwind
           </div> */}
-          <div className="font-mono text-sm text-muted-foreground text-center">
-            © 2025 <span className="text-primary">Ahmed Afrid</span>
+          <div className="font-mono text-sm text-muted-foreground">
+            © {new Date().getFullYear()} <span className="text-primary">Ahmed Afrid</span>
           </div>
         </div>
       </footer>
